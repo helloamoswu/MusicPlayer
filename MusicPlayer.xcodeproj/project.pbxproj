@@ -79,7 +79,7 @@
 		B06315201AEBBB0000F1E333 /* AddMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B06313661AEBBAFF00F1E333 /* AddMusicTableViewController.m */; };
 		B06315211AEBBB0000F1E333 /* ArtistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B06313681AEBBAFF00F1E333 /* ArtistTableViewController.m */; };
 		B06315221AEBBB0000F1E333 /* DongTingTopListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B063136A1AEBBAFF00F1E333 /* DongTingTopListTableViewController.m */; };
-		B06315231AEBBB0000F1E333 /* DownloadMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B063136C1AEBBAFF00F1E333 /* DownloadMusicTableViewController.m */; };
+		B06315231AEBBB0000F1E333 /* SearchMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B063136C1AEBBAFF00F1E333 /* SearchMusicTableViewController.m */; };
 		B06315241AEBBB0000F1E333 /* DownloadTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B063136E1AEBBAFF00F1E333 /* DownloadTaskTableViewController.m */; };
 		B06315251AEBBB0000F1E333 /* MusicGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B06313701AEBBAFF00F1E333 /* MusicGroupTableViewController.m */; };
 		B06315261AEBBB0000F1E333 /* MusicListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B06313721AEBBAFF00F1E333 /* MusicListTableViewController.m */; };
@@ -458,8 +458,8 @@
 		B06313681AEBBAFF00F1E333 /* ArtistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistTableViewController.m; sourceTree = "<group>"; };
 		B06313691AEBBAFF00F1E333 /* DongTingTopListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DongTingTopListTableViewController.h; sourceTree = "<group>"; };
 		B063136A1AEBBAFF00F1E333 /* DongTingTopListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DongTingTopListTableViewController.m; sourceTree = "<group>"; };
-		B063136B1AEBBAFF00F1E333 /* DownloadMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadMusicTableViewController.h; sourceTree = "<group>"; };
-		B063136C1AEBBAFF00F1E333 /* DownloadMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadMusicTableViewController.m; sourceTree = "<group>"; };
+		B063136B1AEBBAFF00F1E333 /* SearchMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMusicTableViewController.h; sourceTree = "<group>"; };
+		B063136C1AEBBAFF00F1E333 /* SearchMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMusicTableViewController.m; sourceTree = "<group>"; };
 		B063136D1AEBBAFF00F1E333 /* DownloadTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTaskTableViewController.h; sourceTree = "<group>"; };
 		B063136E1AEBBAFF00F1E333 /* DownloadTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTaskTableViewController.m; sourceTree = "<group>"; };
 		B063136F1AEBBAFF00F1E333 /* MusicGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicGroupTableViewController.h; sourceTree = "<group>"; };
@@ -1073,8 +1073,8 @@
 				B06313681AEBBAFF00F1E333 /* ArtistTableViewController.m */,
 				B06313691AEBBAFF00F1E333 /* DongTingTopListTableViewController.h */,
 				B063136A1AEBBAFF00F1E333 /* DongTingTopListTableViewController.m */,
-				B063136B1AEBBAFF00F1E333 /* DownloadMusicTableViewController.h */,
-				B063136C1AEBBAFF00F1E333 /* DownloadMusicTableViewController.m */,
+				B063136B1AEBBAFF00F1E333 /* SearchMusicTableViewController.h */,
+				B063136C1AEBBAFF00F1E333 /* SearchMusicTableViewController.m */,
 				B063136D1AEBBAFF00F1E333 /* DownloadTaskTableViewController.h */,
 				B063136E1AEBBAFF00F1E333 /* DownloadTaskTableViewController.m */,
 				B063136F1AEBBAFF00F1E333 /* MusicGroupTableViewController.h */,
@@ -1837,7 +1837,7 @@
 				B05615061AEDC17E007CA497 /* MJRefreshLegendFooter.m in Sources */,
 				B05614FC1AEDC17E007CA497 /* TFHpple.m in Sources */,
 				B06316371AEBBB0000F1E333 /* MusicTableViewCell.m in Sources */,
-				B06315231AEBBB0000F1E333 /* DownloadMusicTableViewController.m in Sources */,
+				B06315231AEBBB0000F1E333 /* SearchMusicTableViewController.m in Sources */,
 				B063163C1AEBBB0000F1E333 /* ScrolleTableViewCell.m in Sources */,
 				B06316331AEBBB0000F1E333 /* DownloadTableViewCell.m in Sources */,
 				B05615001AEDC17E007CA497 /* MJRefreshComponent.m in Sources */,

@@ -606,37 +606,6 @@
             </objects>
             <point key="canvasLocation" x="605" y="106"/>
         </scene>
-        <!--精选-->
-        <scene sceneID="8kG-fX-ipr">
-            <objects>
-                <collectionViewController id="Ogs-6g-cio" customClass="SelectedCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="mZx-h5-3Ui">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewLayout key="collectionViewLayout" id="qhu-Mw-zBP" customClass="CategoryCollectionViewLayout"/>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ryQ-hb-2cj">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Ogs-6g-cio" id="tdh-uT-Ucc"/>
-                            <outlet property="delegate" destination="Ogs-6g-cio" id="llb-c1-gYB"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="精选" id="HPg-mM-cpO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IbS-Yg-F8E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="154" y="2796"/>
-        </scene>
         <!--Add Music Table View Controller-->
         <scene sceneID="Yu1-Bx-oEN">
             <objects>
@@ -673,12 +642,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXu-ET-RRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="2708"/>
+            <point key="canvasLocation" x="1476" y="2685"/>
         </scene>
         <!--乐库-->
         <scene sceneID="IdQ-Es-e9l">
             <objects>
-                <tableViewController id="0th-AC-inP" customClass="DownloadMusicTableViewController" sceneMemberID="viewController">
+                <tableViewController id="0th-AC-inP" customClass="SearchMusicTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="FFr-g0-tBQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -789,27 +758,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FmF-zf-gKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2600" y="829"/>
-        </scene>
-        <!--精选-->
-        <scene sceneID="Wma-Gz-XsM">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3B4-Jl-paD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="精选" image="tabbar_item_selected" id="Hnj-8d-0w6"/>
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gbT-xk-OdT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Ogs-6g-cio" kind="relationship" relationship="rootViewController" id="hq9-vs-4xv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zAf-eD-J8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="154" y="2133"/>
         </scene>
         <!--Artist Table View Controller-->
         <scene sceneID="DqE-rz-Arq">
@@ -951,7 +899,6 @@
         <image name="tabbar_download_item.png" width="32" height="32"/>
         <image name="tabbar_item_more.png" width="30" height="30"/>
         <image name="tabbar_item_my_music" width="30" height="30"/>
-        <image name="tabbar_item_selected" width="30" height="30"/>
         <image name="tabbar_item_selected.png" width="30" height="30"/>
         <image name="tabbar_item_store" width="30" height="30"/>
     </resources>

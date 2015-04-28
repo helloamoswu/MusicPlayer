@@ -1,12 +1,12 @@
 //
-//  DownloadMusicTableViewController.m
+//  SearchMusicTableViewController.m
 //  MusicPlayer
 //
 //  Created by amos on 15-3-29.
 //  Copyright (c) 2015年 amos. All rights reserved.
 //
 
-#import "DownloadMusicTableViewController.h"
+#import "SearchMusicTableViewController.h"
 #import "DownloadTaskTableViewController.h"
 #import "MvViewController.h"
 #import "OnlineMusic.h"
@@ -26,7 +26,7 @@ typedef enum : NSUInteger {
     TTDT
 } SearchSourch;
 
-@interface DownloadMusicTableViewController () <UISearchBarDelegate, TryListenManagerDelegate,
+@interface SearchMusicTableViewController () <UISearchBarDelegate, TryListenManagerDelegate,
                                                 UIAlertViewDelegate, DownloadManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -46,7 +46,7 @@ typedef enum : NSUInteger {
 
 @end
 
-@implementation DownloadMusicTableViewController
+@implementation SearchMusicTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

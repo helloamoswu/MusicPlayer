@@ -15,6 +15,7 @@
 @interface WelcomeCollectionViewController ()
 
 @property (nonatomic, strong)UIPageControl *pageControl;
+@property (nonatomic, strong)UIButton *startBtn;
 
 @end
 
@@ -92,14 +93,18 @@ static NSString * const reuseIdentifier = @"Cell";
     
     cell.backgroundView = imageView;
     
+    if (self.startBtn) {
+        [self.startBtn removeFromSuperview];
+    }
+    
     if (indexPath.row == 4) {
-        UIButton *startBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        startBtn.frame = CGRectMake(self.view.frame.size.width/2 - 50, self.view.frame.size.height - 100, 100, 40);
-        [startBtn setTitle:@"进入" forState:UIControlStateNormal];
-        startBtn.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-        [startBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal ];
-        [startBtn addTarget:self action:@selector(goToMainWindow) forControlEvents:UIControlEventTouchUpInside];
-        [cell.contentView addSubview:startBtn];
+        self.startBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.startBtn.frame = CGRectMake(self.view.frame.size.width/2 - 50, self.view.frame.size.height - 100, 100, 40);
+        [self.startBtn setTitle:@"进入" forState:UIControlStateNormal];
+        self.startBtn.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+        [self.startBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal ];
+        [self.startBtn addTarget:self action:@selector(goToMainWindow) forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:self.startBtn];
     }
     
     return cell;

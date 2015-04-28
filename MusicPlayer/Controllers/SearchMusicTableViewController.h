@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaiduMusicUtils.h"
 
-@interface DownloadMusicTableViewController : UITableViewController
+@interface SearchMusicTableViewController : UITableViewController
 
 @end
