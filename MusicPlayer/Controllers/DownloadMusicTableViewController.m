@@ -176,7 +176,7 @@ typedef enum : NSUInteger {
     [searchBar resignFirstResponder];
 }
 
-- (void)searchBaiDuMusicWithSearchText:(NSString *)searchText andStartIndex:(NSNumber *)index Completion:(Callback)callback
+- (void)searchBaiDuMusicWithSearchText:(NSString *)searchText andStartIndex:(NSNumber *)index Completion:(Completion)callback
 {
     self.isNoMoreData = NO;
     self.baiduParams[@"key"] = searchText;
@@ -202,7 +202,7 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)searchTTDTMusicWithSearchText:(NSString *)searchText andPageNumber:(NSNumber *)page Completion:(Callback)callback
+- (void)searchTTDTMusicWithSearchText:(NSString *)searchText andPageNumber:(NSNumber *)page Completion:(Completion)callback
 {
     self.isNoMoreData = NO;
     self.ttdtParams[@"q"] = searchText;
