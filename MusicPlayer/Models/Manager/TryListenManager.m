@@ -112,8 +112,6 @@ static TryListenManager *_manager;
 
 -(void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId
 {
-    [[MPManager shareManager] pause];
-    
     NSLog(@"start playing...");
 }
 

@@ -30,6 +30,7 @@ static MPManager *_manager;
 @property (nonatomic, weak)AppDelegate *app;
 @property (nonatomic, readwrite)BOOL isPlaying;
 @property (nonatomic, strong)IpodManager *ipodManager;
+@property (nonatomic, strong)APAudioPlayer *audioPlayer;
 
 @end
 
@@ -189,9 +190,9 @@ static MPManager *_manager;
         }
     }
     // 自带均衡器，哈哈😄
-    self.audioManager = [[APAudioPlayer alloc] init];
-    self.audioManager.volume = [UserDataUtils CurrentVolume];
-    self.audioManager.delegate = self;
+    self.audioPlayer = [[APAudioPlayer alloc] init];
+    self.audioPlayer.volume = [UserDataUtils CurrentVolume];
+    self.audioPlayer.delegate = self;
     self.isPlaying = NO;
     
     self.ipodManager = [IpodManager shareManager];
@@ -232,8 +233,8 @@ static MPManager *_manager;
     
     if (music) {
         [music removeGroupsObject:self.groupsDict[name]];
-        
-        if (music.groups.count == 0) {
+        // 不删除Ipod库的歌曲
+        if (music.groups.count == 0 && ![music.path hasPrefix:IPOD]) {
             [[NSFileManager defaultManager] removeItemAtPath:music.path error:nil];
             [self.app.managedObjectContext deleteObject:music];
         }
@@ -257,7 +258,7 @@ static MPManager *_manager;
     if (music) {
         [music removeGroupsObject:self.groupsDict[name]];
         
-        if (music.groups.count == 0) {
+        if (music.groups.count == 0 && ![music.path hasPrefix:IPOD]) {
             [[NSFileManager defaultManager] removeItemAtPath:music.path error:nil];
             [self.app.managedObjectContext deleteObject:music];
         }
@@ -383,7 +384,7 @@ static MPManager *_manager;
     if (self.isIpodMusic) {
         self.ipodManager.currentTime = currentTime;
     } else {
-        self.audioManager.currentTime = currentTime;
+        self.audioPlayer.currentTime = currentTime;
     }
 }
 
@@ -392,7 +393,7 @@ static MPManager *_manager;
     if (self.isIpodMusic) {
         return self.ipodManager.currentTime;
     } else {
-        return self.audioManager.currentTime;
+        return self.audioPlayer.currentTime;
     }
 }
 
@@ -401,7 +402,7 @@ static MPManager *_manager;
     if (self.isIpodMusic) {
         self.ipodManager.volume = volume;
     } else {
-        self.audioManager.volume = volume;
+        self.audioPlayer.volume = volume;
     }
 }
 
@@ -410,7 +411,7 @@ static MPManager *_manager;
     if (self.isIpodMusic) {
         return self.ipodManager.volume;
     } else {
-        return self.audioManager.volume;
+        return self.audioPlayer.volume;
     }
 }
 
@@ -434,17 +435,17 @@ static MPManager *_manager;
     [PlayerManagerUtils pauseAllPlayerExcept:self];
     
     // 启动时没有准备音乐，所以这里要判断一下
-    if (!self.audioManager.hasPlayItem && !self.ipodManager.hasPlayItem) {
+    if (!self.audioPlayer.hasPlayItem && !self.ipodManager.hasPlayItem) {
         [self prepareMusic];
     }
     // 当前播放的歌曲是ipod的歌
     if (self.isIpodMusic) {
         [self.ipodManager play];
-        [self.audioManager stop];
+        [self.audioPlayer stop];
     }
     // 当前播放的歌曲是自己下载的歌
     else {
-        [self.audioManager resume];
+        [self.audioPlayer resume];
         [self.ipodManager stop];
     }
     
@@ -457,7 +458,7 @@ static MPManager *_manager;
     if (self.isIpodMusic) {
         [self.ipodManager pause];
     } else {
-        [self.audioManager pause];
+        [self.audioPlayer pause];
     }
     
     self.isPlaying = NO;
@@ -468,7 +469,7 @@ static MPManager *_manager;
     if (self.isIpodMusic) {
         [self.ipodManager stop];
     } else {
-        [self.audioManager stop];
+        [self.audioPlayer stop];
     }
     
     self.isPlaying = NO;
@@ -510,7 +511,7 @@ static MPManager *_manager;
         [self.ipodManager playMusicWithAssertPath:self.curMusic.path];
     } else {
         NSURL *url = [NSURL fileURLWithPath:self.curMusic.path];
-        [self.audioManager playItemWithURL:url];
+        [self.audioPlayer playItemWithURL:url];
     }
     // 由于一些歌曲在存入数据库时未能正确的获取时长，比如无损格式的歌曲
     // 对于那些时长为0的歌曲，这里需要重新更新一下
@@ -556,6 +557,7 @@ static MPManager *_manager;
     self.curMusic = self.curPlayMusics[_curMusicIndex];
     self.isIpodMusic = [self.curMusic.path hasPrefix:IPOD];
 }
+
 
 #pragma mark -
 
@@ -655,7 +657,7 @@ static MPManager *_manager;
         if (self.isIpodMusic) {
             self.curMusic.duration = @(self.ipodManager.duration);
         } else {
-            self.curMusic.duration = @(self.audioManager.duration);
+            self.curMusic.duration = @(self.audioPlayer.duration);
         }
         
         [self.app saveContext];
@@ -737,7 +739,7 @@ static MPManager *_manager;
         
         for (Music *music in group.musics) {
             // 歌曲只在当前要删除的组里，直接删除
-            if (music.groups.count == 1 && ![music.path hasPrefix:@"Ipod"]) {
+            if (music.groups.count == 1 && ![music.path hasPrefix:IPOD]) {
                 [self.app.managedObjectContext deleteObject:music];
                 [[NSFileManager defaultManager] removeItemAtPath:music.path error:nil];
             }
@@ -747,6 +749,11 @@ static MPManager *_manager;
         [self.app saveContext];
         [self loadGroups];
     }
+}
+// 设置均衡器
+- (void)setGain:(float)value forCenterFrequency:(float)center
+{
+    [self.audioPlayer setGain:value forCenterFrequency:center];
 }
 
 @end

@@ -24,7 +24,6 @@ typedef void (^Completion) (id obj);
 
 @interface MPManager : NSObject<APAudioPlayerDelegate>
 
-@property (nonatomic, strong)APAudioPlayer *audioManager;
 @property (nonatomic, weak)id<MPManagerDelegate>delegate;
 
 @property (nonatomic, strong)NSArray *groups;
@@ -73,5 +72,7 @@ typedef void (^Completion) (id obj);
 
 - (void)initialAppData;
 - (void)reLoadIpoadMusics;
+
+- (void)setGain:(float)value forCenterFrequency:(float)center;
 
 @end

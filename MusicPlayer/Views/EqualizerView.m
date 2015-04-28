@@ -96,14 +96,14 @@
 
 - (void)sliderValueChanged:(UISlider *)sender
 {
-    [self.playerManager.audioManager setGain:sender.value forCenterFrequency:sender.tag];
+    [self.playerManager setGain:sender.value forCenterFrequency:sender.tag];
 }
 
 - (void)restoreEqualizerValue
 {
     for (int i = 0; i < 10; i++) {
         UISlider *slider = self.sliders[i];
-        [self.playerManager.audioManager setGain:0 forCenterFrequency:slider.tag];
+        [self.playerManager setGain:0 forCenterFrequency:slider.tag];
         [UIView animateWithDuration:1.5 animations:^{
             slider.value = 0;
         }];
