@@ -151,6 +151,7 @@
     cell.music = music;
     cell.downloadBtn.tag = (int)indexPath.row;
     [cell.downloadBtn addTarget:self action:@selector(downloadClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.qualityBtn setTitle:@"品质" forState:UIControlStateNormal];
     
     if (cell.qualitySV) {
         [cell.qualitySV removeFromSuperview];

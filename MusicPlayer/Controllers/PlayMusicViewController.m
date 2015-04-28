@@ -265,10 +265,9 @@
     self.bgView.image = self.artworkIV.image;
     
     //获取歌词
-    //NSString *lrcPath = [self.playerManager lrcPathWithMusicPath:self.playerManager.curMusicName];
     // 先隐藏歌词栏
     self.lrcTableView.alpha = 0.0;
-    [self.playerManager lrcPathWithMusicTitle:self.title andCallback:^(id obj) {
+    [self.playerManager lrcPathWithMusicTitle:self.title Completion:^(id obj) {
         NSLog(@"歌词....");
         NSString *lrcPath =  obj;
         // 判断有没有歌词，有的话加载歌词

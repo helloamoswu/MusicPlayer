@@ -729,10 +729,10 @@
             </objects>
             <point key="canvasLocation" x="1476" y="1974"/>
         </scene>
-        <!--Top List Table View Controller-->
+        <!--Bai Du Top List Table View Controller-->
         <scene sceneID="OYS-6s-9d6">
             <objects>
-                <tableViewController id="bXY-ML-8IO" customClass="TopListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="bXY-ML-8IO" customClass="BaiDuTopListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fOq-7e-5ti">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

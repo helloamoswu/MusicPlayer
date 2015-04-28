@@ -10,7 +10,7 @@
 #import "APAudioPlayer.h"
 #import "OnlineMusic.h"
 
-typedef void (^Callback) (id obj);
+typedef void (^Completion) (id obj);
 
 @class Music;
 @class Group;
@@ -62,11 +62,12 @@ typedef void (^Callback) (id obj);
 - (BOOL)addGroupWithName: (NSString *)name;
 - (void)removeMusicAtIndex: (NSInteger)index inGroup: (NSString *)name;
 - (void)removeMusic:(Music *)music inGroup:(NSString *)name;
+- (void)removeAllMusicInGroup:(NSString *)name;
 - (void)addMusicWithFilePath:(NSString *)path AndTitle:(NSString *)title AndArtist:(NSString *)artist intoGroup:(NSString *)groupName;
 - (void)addMusics:(NSArray *)musics intoGroup:(NSString *)groupName;
 - (BOOL)isMusicDownloaded:(OnlineMusic *)music;
 - (NSString *)musicPathWithTitle:(NSString *)title andArtist:(NSString *)artist;
-- (void)lrcPathWithMusicTitle:(NSString *)title andCallback:(Callback)callback;
+- (void)lrcPathWithMusicTitle:(NSString *)title Completion:(Completion)callback;
 - (BOOL)isCustomGroup:(NSString *)name;
 - (void)removeGroup:(Group *)group;
 

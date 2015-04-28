@@ -31,7 +31,7 @@
     
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [BaiduMusicUtils searchBaiduMusicWithType:SINGER andParams:nil andCallback:^(id obj) {
+        [BaiduMusicUtils searchBaiduMusicWithType:SINGER andParams:nil Completion:^(id obj) {
             weakSelf.artists = obj;
             [weakSelf.tableView reloadData];
             [weakSelf.tableView.header endRefreshing];

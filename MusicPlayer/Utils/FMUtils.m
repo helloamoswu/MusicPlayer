@@ -29,7 +29,7 @@ static NSDictionary *settingDict;
     return [FMUtils objectInSettingDictWithKey:@"DouBanChannels"];
 }
 
-+ (void)requestDuBanFMMusicsWithChannel:(DouBanChannel)channel andCallback:(Callback)callback
++ (void)requestDuBanFMMusicsWithChannel:(DouBanChannel)channel Completion:(Completion)callback
 {
     NSString *formatePath = [FMUtils objectInSettingDictWithKey:@"DouBanFMMusicsFormatePath"];
     NSString *path = [NSString stringWithFormat:formatePath, channel];
@@ -68,7 +68,7 @@ static NSDictionary *settingDict;
     return channelDict[@(type).stringValue];
 }
 
-+ (void)requestBaiDuFMMusicsWithChannel:(BaiDuChannel)channel andCallback:(Callback)callback
++ (void)requestBaiDuFMMusicsWithChannel:(BaiDuChannel)channel Completion:(Completion)callback
 {
     NSString *formatePath = [FMUtils objectInSettingDictWithKey:@"BaiDuPlayListFormatePath"];
     
@@ -91,7 +91,7 @@ static NSDictionary *settingDict;
         // 9首歌就够了
         int count = songIds.count > 9 ? 9 : (int)songIds.count;
         for (int i = 0; i < songIds.count; i++) {
-            [FMUtils requestBaiDuFMMusicWithSongId:songIds[i] andCallback:^(id obj) {
+            [FMUtils requestBaiDuFMMusicWithSongId:songIds[i] Completion:^(id obj) {
                 if (obj) {
                     [musics addObject:obj];
                 }
@@ -105,7 +105,7 @@ static NSDictionary *settingDict;
     });
 }
 
-+ (void)requestBaiDuFMMusicWithSongId:(NSString *)songId andCallback:(Callback)callback
++ (void)requestBaiDuFMMusicWithSongId:(NSString *)songId Completion:(Completion)callback
 {
     NSString *formatePath = [FMUtils objectInSettingDictWithKey:@"BaiDuFMMusicFormatePath"];
     NSString *songPath = [NSString stringWithFormat:

@@ -88,7 +88,7 @@
     // 歌手榜单
     if (self.type == SINGER) {
         self.params[@"key"] = self.keyWord;
-        [BaiduMusicUtils searchSingerWithParams:self.params andCallback:^(id obj) {
+        [BaiduMusicUtils searchSingerWithParams:self.params Completion:^(id obj) {
             self.musics = obj;
             [self.tableView reloadData];
             [self.tableView.header endRefreshing];
@@ -98,7 +98,7 @@
     }
     // 其他榜单
     else {
-        [BaiduMusicUtils searchBaiduMusicWithType:self.type andParams:nil andCallback:^(id obj) {
+        [BaiduMusicUtils searchBaiduMusicWithType:self.type andParams:nil Completion:^(id obj) {
             self.musics = obj;
             [self.tableView reloadData];
             [self.tableView.header endRefreshing];
@@ -114,7 +114,7 @@
     start += size;
     self.params[@"start"] = @(start).stringValue;
     
-    [BaiduMusicUtils searchSingerWithParams:self.params andCallback:^(id obj) {
+    [BaiduMusicUtils searchSingerWithParams:self.params Completion:^(id obj) {
         if (!obj || [obj count] == 0) {
             self.isNoMoreData = YES;
             [self.tableView.footer noticeNoMoreData];
@@ -166,6 +166,7 @@
     cell.music = music;
     cell.downloadBtn.tag = (int)indexPath.row;
     [cell.downloadBtn addTarget:self action:@selector(downloadClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.qualityBtn setTitle:@"品质" forState:UIControlStateNormal];
     
     if ([self.playerManager isMusicDownloaded:music]) {
         cell.checkIV.image = [UIImage imageNamed:@"check"];

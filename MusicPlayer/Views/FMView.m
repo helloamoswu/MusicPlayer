@@ -223,7 +223,7 @@
     switch (self.curSource) {
         case DOUBAN:
         {
-            [FMUtils requestDuBanFMMusicsWithChannel:channel andCallback:^(id obj) {
+            [FMUtils requestDuBanFMMusicsWithChannel:channel Completion:^(id obj) {
                 NSArray *newMusics = obj;
                 
                 if (!newMusics || newMusics.count == 0) {
@@ -241,7 +241,7 @@
             break;
         case BAIDU:
         {
-            [FMUtils requestBaiDuFMMusicsWithChannel:channel andCallback:^(id obj) {
+            [FMUtils requestBaiDuFMMusicsWithChannel:channel Completion:^(id obj) {
                 NSArray *newMusics = obj;
                 
                 if (!newMusics || newMusics.count == 0) {

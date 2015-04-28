@@ -186,17 +186,17 @@ typedef enum : NSUInteger {
     
     if (self.searchBar.selectedScopeButtonIndex == 0) {
         self.isSearchLrc = NO;
-        [BaiduMusicUtils searchBaiduMusicWithType:SEARCH andParams:self.baiduParams andCallback:^(id obj) {
+        [BaiduMusicUtils searchBaiduMusicWithType:SEARCH andParams:self.baiduParams Completion:^(id obj) {
             callback(obj);
         }];
     } else if (self.searchBar.selectedScopeButtonIndex == 2) {
         self.isSearchLrc = NO;
-        [BaiduMusicUtils searchSingerWithParams:self.baiduParams andCallback:^(id obj) {
+        [BaiduMusicUtils searchSingerWithParams:self.baiduParams Completion:^(id obj) {
             callback(obj);
         }];
     } else {
         self.isSearchLrc = YES;
-        [BaiduMusicUtils searchBaiduLrcWithParams:self.baiduParams andCallback:^(id obj) {
+        [BaiduMusicUtils searchBaiduLrcWithParams:self.baiduParams Completion:^(id obj) {
             callback(obj);
         }];
     }

@@ -34,7 +34,6 @@
     
     UIBarButtonItem *playItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(playClicked)];
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMusics)];
-    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshIpodMusics)];
     
     // 自定义的歌单显示添加按钮
     if ([self.playerManager isCustomGroup:self.title]) {
@@ -42,8 +41,15 @@
     } else {
         // Ipod歌单显示更新按钮
         if ([self.playerManager.curViewGroup isEqualToString:@"Ipod"]) {
+            UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshIpodMusics)];
             self.navigationItem.rightBarButtonItems = @[playItem, self.editButtonItem, refreshItem];
-        } else {
+        }
+        // Latest歌单显示清空按钮
+        else if ([self.playerManager.curViewGroup isEqualToString:@"Latest"]) {
+            UIBarButtonItem *cleanItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(cleanLatestMusics)];
+            self.navigationItem.rightBarButtonItems = @[playItem, self.editButtonItem, cleanItem];
+        }
+        else {
             self.navigationItem.rightBarButtonItems = @[playItem, self.editButtonItem];
         }
     }
@@ -101,6 +107,14 @@
             [self.tableView reloadData];
         });
     });
+}
+
+- (void)cleanLatestMusics
+{
+    [self.playerManager removeAllMusicInGroup:@"Latest"];
+    self.musics = self.playerManager.curViewMusics;
+    self.displayMusics = self.musics;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

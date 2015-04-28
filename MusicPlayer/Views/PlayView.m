@@ -143,12 +143,7 @@
     self.titleLabel.text = [NSString stringWithFormat:@"%@ - %@",curMusic.artist ,curMusic.title];
 }
 
-- (void)didFinishPlaying
-{
-    [self updateMusicUI];
-}
-
-#pragma mark - STKAudioPlayer Delegate
+#pragma mark - MPManager Delegate
 
 - (void)didStartPlaying
 {

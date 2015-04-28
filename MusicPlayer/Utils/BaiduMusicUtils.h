@@ -29,13 +29,13 @@ typedef enum TopListType
     SINGER
 }TopListType;
 
-typedef void (^Callback) (id obj);
+typedef void (^Completion) (id obj);
 
 @interface BaiduMusicUtils : NSObject
 
-+ (void)searchBaiduLrcWithParams:(NSDictionary *)params andCallback:(Callback)callback;
-+ (void)searchBaiduMusicWithType:(TopListType)type andParams:(NSDictionary *)params andCallback:(Callback)callback;
-+(void) searchSingerWithParams:(NSDictionary *)params andCallback:(Callback)callback;
++ (void)searchBaiduLrcWithParams:(NSDictionary *)params Completion:(Completion)callback;
++ (void)searchBaiduMusicWithType:(TopListType)type andParams:(NSDictionary *)params Completion:(Completion)callback;
++(void) searchSingerWithParams:(NSDictionary *)params Completion:(Completion)callback;
 + (NSString *)nameWithTopListType:(TopListType)type;
 + (NSDictionary *)topList;
 

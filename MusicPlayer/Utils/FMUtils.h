@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^Callback) (id obj);
+typedef void (^Completion) (id obj);
 
 #define CHANNEL_COUNT 17
 typedef enum DouBanChannel
@@ -59,9 +59,9 @@ typedef enum FMSource
 @interface FMUtils : NSObject
 
 + (NSArray *)douBanChannels;
-+ (void)requestDuBanFMMusicsWithChannel:(DouBanChannel)channel andCallback:(Callback)callback;
++ (void)requestDuBanFMMusicsWithChannel:(DouBanChannel)channel Completion:(Completion)callback;
 + (NSArray *)baiDuChannels;
-+ (void)requestBaiDuFMMusicsWithChannel:(BaiDuChannel)channel andCallback:(Callback)callback;
++ (void)requestBaiDuFMMusicsWithChannel:(BaiDuChannel)channel Completion:(Completion)callback;
 + (id)objectInSettingDictWithKey:(NSString *)key;
 
 @end

@@ -153,7 +153,7 @@
     }
     // 跳到其他榜单
     else {
-        [self performSegueWithIdentifier:@"GoToTopListViewSegue" sender:@(sender.tag)];
+        [self performSegueWithIdentifier:@"GoBaiDuToTopListViewSegue" sender:@(sender.tag)];
     }
 }
 

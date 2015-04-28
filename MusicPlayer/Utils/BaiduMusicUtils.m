@@ -27,7 +27,7 @@ static NSMutableDictionary *settingDict;
     return settingDict[key];
 }
 
-+ (void)searchBaiduMusicTopArtistWithCallback:(Callback)callback
++ (void)searchBaiduMusicTopArtistWithCompletion:(Completion)callback;
 {
     NSString *path = [BaiduMusicUtils pathWithTopListType:SINGER];
     
@@ -93,7 +93,7 @@ static NSMutableDictionary *settingDict;
     return path;
 }
 
-+ (void)searchBaiduMusicWithType:(TopListType)type andParams:(NSDictionary *)params andCallback:(Callback)callback
++ (void)searchBaiduMusicWithType:(TopListType)type andParams:(NSDictionary *)params Completion:(Completion)callback;
 {
     NSString *path = [BaiduMusicUtils pathWithTopListType:type];
     NSString *xPath;
@@ -104,7 +104,7 @@ static NSMutableDictionary *settingDict;
         }
         // 歌手榜
         else if (type == SINGER) {
-            [BaiduMusicUtils searchBaiduMusicTopArtistWithCallback:^(id obj) {
+            [BaiduMusicUtils searchBaiduMusicTopArtistWithCompletion:^(id obj) {
                 callback(obj);
             }];
             return;
@@ -154,7 +154,7 @@ static NSMutableDictionary *settingDict;
     });
 }
 
-+(void) searchSingerWithParams:(NSDictionary *)params andCallback:(Callback)callback
++(void) searchSingerWithParams:(NSDictionary *)params Completion:(Completion)callback;
 {
     NSString *path = [BaiduMusicUtils objectInSettingDictWithKey:@"SearchPath"];
     NSString *xPath;
@@ -212,7 +212,7 @@ static NSMutableDictionary *settingDict;
     });
 }
 
-+ (void)searchBaiduLrcWithParams:(NSDictionary *)params andCallback:(Callback)callback
++ (void)searchBaiduLrcWithParams:(NSDictionary *)params Completion:(Completion)callback;
 {
     NSString *path = [BaiduMusicUtils objectInSettingDictWithKey:@"LrcPath"];
     path = [BaiduMusicUtils pathSerializerWithPath:path andParam:params];

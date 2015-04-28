@@ -274,6 +274,30 @@ static MPManager *_manager;
     }
 }
 
+- (void)removeAllMusicInGroup:(NSString *)name
+{
+    NSArray *musics = self.musicsDict[name];
+    Group *group = self.groupsDict[name];
+    for (Music *music in musics) {
+        [music removeGroupsObject:group];
+        
+        if (music.groups.count == 0) {
+            [[NSFileManager defaultManager] removeItemAtPath:music.path error:nil];
+            [self.app.managedObjectContext deleteObject:music];
+        }
+    }
+    
+    [self.app saveContext];
+    
+    self.musicsDict[name] = [self musicsWithGroupName:name];
+    if ([name isEqualToString:self.curPlayGroup]) {
+        self.curPlayMusics = self.musicsDict[name];
+    }
+    if ([name isEqualToString:self.curViewGroup]) {
+        self.curViewMusics = self.musicsDict[name];
+    }
+}
+
 
 #pragma Add Music
 // 添加音乐到指定组里
@@ -314,7 +338,6 @@ static MPManager *_manager;
 - (void)didFinishPlayIpodMusic
 {
     [self skipToNextMusic];
-    [self.delegate didStartPlaying];
 }
 
 #pragma mark - APAudioPlayer Delegate
@@ -322,7 +345,6 @@ static MPManager *_manager;
 - (void)playerDidFinishPlaying:(APAudioPlayer *)player
 {
     [self skipToNextMusic];
-    [self.delegate didStartPlaying];
 }
 
 - (UIImage *)ipodArtworkImage
@@ -501,6 +523,8 @@ static MPManager *_manager;
     [self play];
     
     [self updateLatestGroup];
+    
+    [self.delegate didStartPlaying];
 }
 
 - (void)replay
@@ -639,7 +663,7 @@ static MPManager *_manager;
 }
 
 // 先在本地查找歌词文件，找不到的话再到百度音乐找找
-- (void)lrcPathWithMusicTitle:(NSString *)title andCallback:(Callback)callback
+- (void)lrcPathWithMusicTitle:(NSString *)title Completion:(Completion)callback
 {
     if (title == nil) {
         return;
@@ -666,7 +690,7 @@ static MPManager *_manager;
                 
                 // 到百度音乐去找找看有没有歌词
                 NSString *keyWord = [NSString stringWithFormat:@"%@ %@", artist, realTitle];
-                [BaiduMusicUtils searchBaiduLrcWithParams:@{@"key":keyWord} andCallback:^(id obj) {
+                [BaiduMusicUtils searchBaiduLrcWithParams:@{@"key":keyWord} Completion:^(id obj) {
                     NSArray *lrcs = obj;
                     
                     if (lrcs.count == 0) {
